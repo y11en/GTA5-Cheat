@@ -1,0 +1,2985 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="26">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>7</ID>
+      <Description>"Open"</Description>
+      <Options moHideChildren="1"/>
+      <LastState Activated="1"/>
+      <Color>0000FF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+autoAssemble([[
+aobscanmodule(WorldPTR,GTA5.exe,48 8B 05 ? ? ? ? 45 ? ? ? ? 48 8B 48 08 48 85 C9 74 07)
+registersymbol(WorldPTR)
+aobscanmodule(BlipPTR,GTA5.exe,4C 8D 05 ? ? ? ? 0F B7 C1)
+registersymbol(BlipPTR)
+aobscanmodule(PlayerCountPTR,GTA5.exe,48 8B 0D ? ? ? ? E8 ? ? ? ? 48 8B C8 E8 ? ? ? ? 48 8B CF)
+registersymbol(PlayerCountPTR)
+aobscanmodule(GetPointerAddressA,GTA5.exe,4D 89 B4 F7 xx xx xx xx 48 8B 74 24)
+registersymbol(GetPointerAddressA)
+aobscanmodule(GlobalPTR,GTA5.exe,4C 8D 05 ? ? ? ? 4D 8B 08 4D 85 C9 74 11)
+registersymbol(GlobalPTR)
+]])
+local addr = getAddress("WorldPTR")
+addr = addr + readInteger(addr + 3) + 7
+unregisterSymbol("WorldPTR")
+registerSymbol("WorldPTR", addr, true)
+addr = getAddress("BlipPTR")
+addr = addr + readInteger(addr + 3) + 7
+unregisterSymbol("BlipPTR")
+registerSymbol("BlipPTR", addr, true)
+local addr = getAddress("playerCountPTR")
+addr = addr + readInteger(addr + 3) + 7
+unregisterSymbol("PlayerCountPTR")
+registerSymbol("PlayerCountPTR", addr, true)
+local addr = getAddress("GetPointerAddressA")
+addr = addr + 4
+addr = readInteger(addr)
+addr = addr + getAddress("GTA5.exe")
+unregisterSymbol("GetPointerAddressA")
+registerSymbol("GetPointerAddressA", addr, true)
+local addr=getAddress("GlobalPTR")
+addr=addr+readInteger(addr+3)+7
+unregisterSymbol("GlobalPTR")
+registerSymbol("GlobalPTR",addr,true)
+[DISABLE]
+unregisterSymbol("WorldPTR")
+unregisterSymbol("BlipPTR")
+unregisterSymbol("PlayerCountPTR")
+unregistersymbol(GetPointerAddressA)
+unregisterSymbol(GlobalPTR)
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>47</ID>
+          <Description>"Local Player"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>00FF00</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>48</ID>
+              <Description>"Player Info"</Description>
+              <LastState Value="0000000013396C20" RealAddress="0E38C988"/>
+              <ShowAsHex>1</ShowAsHex>
+              <Color>C0C0C0</Color>
+              <VariableType>8 Bytes</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>10B8</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>715</ID>
+                  <Description>"Anti AFK"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">300000:OFF
+1234567890:ON
+</DropDownList>
+                  <LastState Value="300000" RealAddress="4C0C02C0"/>
+                  <Color>000000</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>GetPointerAddressA+8</Address>
+                  <Offsets>
+                    <Offset>2C0</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>972</ID>
+                  <Description>"Name Changer"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>008080</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>769</ID>
+                      <Description>"Social Club"</Description>
+                      <Options moHideChildren="1" moRecursiveSetValue="1"/>
+                      <LastState RealAddress="142505EFC"/>
+                      <Color>00FF00</Color>
+                      <VariableType>String</VariableType>
+                      <Length>20</Length>
+                      <Unicode>0</Unicode>
+                      <CodePage>0</CodePage>
+                      <ZeroTerminate>1</ZeroTerminate>
+                      <Address>PlayerCountPTR</Address>
+                      <Offsets>
+                        <Offset>45135C</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>770</ID>
+                          <Description>"Name (Local)"</Description>
+                          <Options moRecursiveSetValue="1"/>
+                          <LastState RealAddress="13396C9C"/>
+                          <Color>008080</Color>
+                          <VariableType>String</VariableType>
+                          <Length>20</Length>
+                          <Unicode>0</Unicode>
+                          <CodePage>0</CodePage>
+                          <ZeroTerminate>1</ZeroTerminate>
+                          <Address>WorldPTR</Address>
+                          <Offsets>
+                            <Offset>7C</Offset>
+                            <Offset>10B8</Offset>
+                            <Offset>8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>973</ID>
+                      <Description>"Steam"</Description>
+                      <Options moHideChildren="1" moRecursiveSetValue="1"/>
+                      <LastState RealAddress="14250688C"/>
+                      <Color>00FF00</Color>
+                      <VariableType>String</VariableType>
+                      <Length>20</Length>
+                      <Unicode>0</Unicode>
+                      <CodePage>0</CodePage>
+                      <ZeroTerminate>1</ZeroTerminate>
+                      <Address>PlayerCountPTR</Address>
+                      <Offsets>
+                        <Offset>451CEC</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>974</ID>
+                          <Description>"Name (Local)"</Description>
+                          <Options moRecursiveSetValue="1"/>
+                          <LastState RealAddress="13396C9C"/>
+                          <Color>008080</Color>
+                          <VariableType>String</VariableType>
+                          <Length>20</Length>
+                          <Unicode>0</Unicode>
+                          <CodePage>0</CodePage>
+                          <ZeroTerminate>1</ZeroTerminate>
+                          <Address>WorldPTR</Address>
+                          <Offsets>
+                            <Offset>7C</Offset>
+                            <Offset>10B8</Offset>
+                            <Offset>8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>2</ID>
+                  <Description>"Out Of Radar ( Lester )"</Description>
+                  <LastState/>
+                  <Color>C0C0C0</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+e=readPointer(getAddress("GlobalPTR+48"))
+d=readInteger(e+0x714E8) c=readInteger(e+0x97108)
+writeInteger(e+0x97338,d+5341000)
+writeInteger(e+0x7E108+0xCB0*c,1)
+[DISABLE]
+{$lua}
+writeInteger(e+0x7E108+0xCB0*c,0)
+</AssemblerScript>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Toggle Activation</Action>
+                      <Keys>
+                        <Key>46</Key>
+                      </Keys>
+                      <ID>0</ID>
+                      <ActivateSound TTS="EN">Out of radar Activated</ActivateSound>
+                      <DeactivateSound TTS="EN">Out of radar Deactivated</DeactivateSound>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>348478</ID>
+                  <Description>"Reveal Players"</Description>
+                  <LastState/>
+                  <Color>C0C0C0</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+a=readPointer(getAddress("GlobalPTR+48"))
+b=readInteger(a+0x714E8) c=readInteger(a+0x97106)
+writeInteger(a+0x97340,b+10741000)
+address=getAddress(a+0x7E108+0xCB0*c)
+address=address+24
+e=( string.format( '%x', address ) );
+writeInteger(e, "1")
+[DISABLE]
+{$lua}
+writeInteger(e, "0")
+</AssemblerScript>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Toggle Activation</Action>
+                      <Keys>
+                        <Key>35</Key>
+                      </Keys>
+                      <ID>0</ID>
+                      <ActivateSound TTS="EN">Reveal players Activated</ActivateSound>
+                      <DeactivateSound TTS="EN">Reveal players Deactivated</DeactivateSound>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16</ID>
+                  <Description>"Invisibility"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">47:OFF
+1:ON
+</DropDownList>
+                  <LastState Value="47" RealAddress="0E38B8FC"/>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>2c</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>46</ID>
+                  <Description>"Wanted Level"</Description>
+                  <LastState Value="0" RealAddress="13397438"/>
+                  <Color>413CFF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>818</Offset>
+                    <Offset>10B8</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Increase Value</Action>
+                      <Keys>
+                        <Key>33</Key>
+                      </Keys>
+                      <Value>1</Value>
+                      <ID>0</ID>
+                      <ActivateSound>Activate</ActivateSound>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Decrease Value</Action>
+                      <Keys>
+                        <Key>34</Key>
+                      </Keys>
+                      <Value>1</Value>
+                      <ID>1</ID>
+                      <ActivateSound>Deactivate</ActivateSound>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9</ID>
+                  <Description>"Player Godmode"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:false
+1:true
+</DropDownList>
+                  <LastState Value="0" RealAddress="0E38BA59"/>
+                  <Color>FFFF00</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>189</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>107</Key>
+                      </Keys>
+                      <Value>1</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>194</Key>
+                      </Keys>
+                      <Value>0</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>10</ID>
+                  <Description>"Max Health"</Description>
+                  <LastState Value="328" RealAddress="0E38BB70"/>
+                  <Color>C0C0C0</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>2A0</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>97</Key>
+                      </Keys>
+                      <Value>328</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>98</Key>
+                      </Keys>
+                      <Value>2600</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>976</ID>
+                  <Description>"Health"</Description>
+                  <LastState Value="328" RealAddress="0E38BB50"/>
+                  <Color>00CC00</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>280</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>97</Key>
+                      </Keys>
+                      <Value>328</Value>
+                      <Description>Restore Health</Description>
+                      <ID>0</ID>
+                      <ActivateSound>Activate</ActivateSound>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>98</Key>
+                      </Keys>
+                      <Value>2600</Value>
+                      <Description>Juggernaut</Description>
+                      <ID>0</ID>
+                      <ActivateSound>Activate</ActivateSound>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Toggle Activation</Action>
+                      <Keys>
+                        <Key>103</Key>
+                      </Keys>
+                      <ID>1</ID>
+                      <ActivateSound TTS="EN">help activated</ActivateSound>
+                      <DeactivateSound TTS="EN">help deactivated</DeactivateSound>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>11</ID>
+                  <Description>"Armor"</Description>
+                  <LastState Value="50" RealAddress="0E38CD88"/>
+                  <Color>FF8000</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>14B8</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>99</Key>
+                      </Keys>
+                      <Value>50</Value>
+                      <Description>Restore Armor</Description>
+                      <ID>0</ID>
+                      <ActivateSound>Activate</ActivateSound>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>977</ID>
+                  <Description>"No Ragdoll"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">20:false
+21:true
+</DropDownList>
+                  <LastState Value="20" RealAddress="0E38C978"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>FF0000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>10A8</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>107</Key>
+                      </Keys>
+                      <Value>21</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>194</Key>
+                      </Keys>
+                      <Value>20</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>978</ID>
+                  <Description>"Player Modifiers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>808080</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>20</ID>
+                      <Description>"Stamina"</Description>
+                      <LastState Value="100" RealAddress="133978A0"/>
+                      <Color>008080</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>C80</Offset>
+                        <Offset>10B8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>19</ID>
+                      <Description>"Sprint Speed"</Description>
+                      <LastState Value="1" RealAddress="13396D6C"/>
+                      <Color>008080</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>14C</Offset>
+                        <Offset>10B8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>18</ID>
+                      <Description>"Swim Speed"</Description>
+                      <LastState Value="1" RealAddress="13396D68"/>
+                      <Color>008080</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>148</Offset>
+                        <Offset>10B8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>13</ID>
+                  <Description>"Player Position"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="0000000013F697D0" RealAddress="0E38B900"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>000000</Color>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>30</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>12</ID>
+                      <Description>"X"</Description>
+                      <LastState Value="246.1504669" RealAddress="13F69820"/>
+                      <Color>FF00FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>50</Offset>
+                        <Offset>30</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>14</ID>
+                      <Description>"Y"</Description>
+                      <LastState Value="-199.7118835" RealAddress="13F69824"/>
+                      <Color>FF00FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>54</Offset>
+                        <Offset>30</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>15</ID>
+                      <Description>"Z"</Description>
+                      <LastState Value="54.51840973" RealAddress="13F69828"/>
+                      <Color>FF00FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>58</Offset>
+                        <Offset>30</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>53</ID>
+              <Description>"Current Vehile"</Description>
+              <LastState Value="000000000E507A40" RealAddress="0E38C5F8"/>
+              <ShowAsHex>1</ShowAsHex>
+              <Color>C0C0C0</Color>
+              <VariableType>8 Bytes</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>D28</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>979</ID>
+                  <Description>"Invisibility Car"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">15:OFF
+1:ON
+</DropDownList>
+                  <LastState Value="15" RealAddress="0E507A6C"/>
+                  <Color>000000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>2c</Offset>
+                    <Offset>D28</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>37</ID>
+                  <Description>"Vehicle Godmode"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:false
+1:true
+</DropDownList>
+                  <LastState Value="0" RealAddress="0E507BC9"/>
+                  <Color>FFFF00</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>189</Offset>
+                    <Offset>D28</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>107</Key>
+                      </Keys>
+                      <Value>1</Value>
+                      <ID>0</ID>
+                      <ActivateSound>Deactivate</ActivateSound>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>194</Key>
+                      </Keys>
+                      <Value>0</Value>
+                      <ID>1</ID>
+                      <ActivateSound>Activate</ActivateSound>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1009</ID>
+                  <Description>"Engine Health 1"</Description>
+                  <LastState Value="1000" RealAddress="0E507CC0"/>
+                  <Color>00A400</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>280</Offset>
+                    <Offset>D28</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>96</Key>
+                      </Keys>
+                      <Value>1000</Value>
+                      <ID>0</ID>
+                      <ActivateSound>Activate</ActivateSound>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Toggle Activation</Action>
+                      <Keys>
+                        <Key>105</Key>
+                      </Keys>
+                      <ID>1</ID>
+                      <ActivateSound TTS="EN">help activated</ActivateSound>
+                      <DeactivateSound TTS="EN">help deactivated</DeactivateSound>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>51</ID>
+                  <Description>"Engine Health 2"</Description>
+                  <LastState Value="1000" RealAddress="0E5082DC"/>
+                  <Color>00A400</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>89C</Offset>
+                    <Offset>D28</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>96</Key>
+                      </Keys>
+                      <Value>1000</Value>
+                      <ID>0</ID>
+                      <ActivateSound>Activate</ActivateSound>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Toggle Activation</Action>
+                      <Keys>
+                        <Key>105</Key>
+                      </Keys>
+                      <ID>1</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>52</ID>
+                  <Description>"Boost"</Description>
+                  <LastState Value="1" RealAddress="0E507D60"/>
+                  <Color>00D2D2</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>320</Offset>
+                    <Offset>D28</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>69</Key>
+                      </Keys>
+                      <Value>1.25</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>49</ID>
+                  <Description>"Seatbelt"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">C8:false
+C9:true
+</DropDownList>
+                  <LastState Value="C8" RealAddress="0E38CCBC"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>FF0000</Color>
+                  <VariableType>Byte</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>13EC</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>107</Key>
+                      </Keys>
+                      <Value>C9</Value>
+                      <ID>0</ID>
+                    </Hotkey>
+                    <Hotkey>
+                      <Action>Set Value</Action>
+                      <Keys>
+                        <Key>194</Key>
+                      </Keys>
+                      <Value>C8</Value>
+                      <ID>1</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>744</ID>
+                  <Description>"Unlimited Vehicle Ammo"</Description>
+                  <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+                  <LastState/>
+                  <Color>0000FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+D28]+1210:
+DB 8
+[[[WorldPTR]+8]+D28]+1224:
+DB 32
+[[[WorldPTR]+8]+D28]+1228:
+DB 14
+
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+D28]+1210:
+DB 8
+[[[WorldPTR]+8]+D28]+1224:
+DB 32
+[[[WorldPTR]+8]+D28]+1228:
+DB 14
+</AssemblerScript>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Toggle Activation</Action>
+                      <Keys>
+                        <Key>109</Key>
+                      </Keys>
+                      <ID>0</ID>
+                      <ActivateSound TTS="EN">unlimited vehicle munitions activated</ActivateSound>
+                      <DeactivateSound TTS="EN">unlimited vehicle munitions deactivated</DeactivateSound>
+                    </Hotkey>
+                  </Hotkeys>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>743</ID>
+                      <Description>"Vehicle Missles"</Description>
+                      <LastState Value="255" RealAddress="0E508C50"/>
+                      <Color>008080</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>1210</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>738</ID>
+                      <Description>"Aircraft Bombs"</Description>
+                      <LastState Value="0" RealAddress="0E508C64"/>
+                      <Color>008080</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>1224</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>739</ID>
+                      <Description>"Aircraft Countermeasures"</Description>
+                      <LastState Value="20" RealAddress="0E508C68"/>
+                      <Color>008080</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>1228</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1010</ID>
+                      <Description>"Oppressor MK2 Misseles"</Description>
+                      <LastState Value="20" RealAddress="0E508C54"/>
+                      <Color>008080</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>1214</Offset>
+                        <Offset>0</Offset>
+                        <Offset>48</Offset>
+                        <Offset>50</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1011</ID>
+                  <Description>"Vehicle Modifiers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>808080</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>1012</ID>
+                      <Description>"Acceleration"</Description>
+                      <LastState Value="1" RealAddress="15DFADAC"/>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>4C</Offset>
+                        <Offset>8C8</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>992</ID>
+                      <Description>"Brake Force"</Description>
+                      <LastState Value="1.200000048" RealAddress="15DFADCC"/>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>6C</Offset>
+                        <Offset>8C8</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>993</ID>
+                      <Description>"Handbrake Force"</Description>
+                      <LastState Value="1.299999952" RealAddress="15DFADDC"/>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>7C</Offset>
+                        <Offset>8C8</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1013</ID>
+                      <Description>"Deform Multiplier"</Description>
+                      <LastState Value="0.8000000119" RealAddress="15DFAE58"/>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>F8</Offset>
+                        <Offset>8C8</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1014</ID>
+                      <Description>"Dirt Level"</Description>
+                      <LastState Value="8.000080109" RealAddress="0E5083C8"/>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>988</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>745</ID>
+                      <Description>"Gravity"</Description>
+                      <LastState Value="11.76000023" RealAddress="0E50860C"/>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>BCC</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>737</ID>
+                      <Description>"Rocket Fuel Level"</Description>
+                      <LastState Value="128" RealAddress="0E507D62"/>
+                      <Color>009797</Color>
+                      <VariableType>Byte</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>322</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>980</ID>
+                      <Description>"Rocket Recharge Speed"</Description>
+                      <LastState Value="0.5" RealAddress="0E507D64"/>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>324</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>991</ID>
+                      <Description>"Suspension Force"</Description>
+                      <LastState Value="5.25" RealAddress="15DFAE1C"/>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>BC</Offset>
+                        <Offset>8C8</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>981</ID>
+                      <Description>"Suspension Height"</Description>
+                      <LastState Value="0" RealAddress="15DFAE30"/>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>D0</Offset>
+                        <Offset>8C8</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>912</ID>
+                      <Description>"Traction Curve Min"</Description>
+                      <LastState Value="2" RealAddress="15DFADF0"/>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>90</Offset>
+                        <Offset>8C8</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>24</ID>
+                      <Description>"Vehicle Damage Multiplier"</Description>
+                      <LastState Value="1" RealAddress="133978C8"/>
+                      <Color>008080</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>CA8</Offset>
+                        <Offset>10B8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>54</ID>
+                  <Description>"Vehicle Position"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="000000001403AFE0" RealAddress="0E507A70"/>
+                  <ShowAsHex>1</ShowAsHex>
+                  <Color>000000</Color>
+                  <VariableType>8 Bytes</VariableType>
+                  <Address>WorldPTR</Address>
+                  <Offsets>
+                    <Offset>30</Offset>
+                    <Offset>D28</Offset>
+                    <Offset>8</Offset>
+                  </Offsets>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>43</ID>
+                      <Description>"X"</Description>
+                      <LastState Value="246.1817322" RealAddress="1403B030"/>
+                      <Color>FF00FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>50</Offset>
+                        <Offset>30</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>44</ID>
+                      <Description>"Y"</Description>
+                      <LastState Value="-199.348587" RealAddress="1403B034"/>
+                      <Color>FF00FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>54</Offset>
+                        <Offset>30</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>45</ID>
+                      <Description>"Z"</Description>
+                      <LastState Value="54.11931229" RealAddress="1403B038"/>
+                      <Color>FF00FF</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>58</Offset>
+                        <Offset>30</Offset>
+                        <Offset>D28</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>26</ID>
+              <Description>"Current Weapon"</Description>
+              <LastState Value="0000000000000000" RealAddress="1A0EB880"/>
+              <ShowAsHex>1</ShowAsHex>
+              <Color>C0C0C0</Color>
+              <VariableType>8 Bytes</VariableType>
+              <Address>WorldPTR</Address>
+              <Offsets>
+                <Offset>20</Offset>
+                <Offset>10C8</Offset>
+                <Offset>8</Offset>
+              </Offsets>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>38</ID>
+                  <Description>"Unlimited Munitions"</Description>
+                  <LastState/>
+                  <Color>0000FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanmodule(ammo,GTA5.exe,41 2B D1 E8)
+ammo:
+  db 90 90 90
+registersymbol(ammo)
+
+[DISABLE]
+ammo:
+  db 41 2B D1
+unregistersymbol(ammo)
+</AssemblerScript>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Toggle Activation</Action>
+                      <Keys>
+                        <Key>111</Key>
+                      </Keys>
+                      <ID>0</ID>
+                      <ActivateSound TTS="EN">unlimited munitions activated</ActivateSound>
+                      <DeactivateSound TTS="EN">unlimited munitions deactivated</DeactivateSound>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1015</ID>
+                  <Description>"Unlimited Magazine"</Description>
+                  <LastState/>
+                  <Color>FF0000</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+aobscanmodule(clip,GTA5.exe,41 2B C9 3B C8 0F)
+clip:
+  db 90 90 90
+registersymbol(clip)
+
+[DISABLE]
+clip:
+  db 41 2B C9
+unregistersymbol(clip)
+</AssemblerScript>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Toggle Activation</Action>
+                      <Keys>
+                        <Key>106</Key>
+                      </Keys>
+                      <ID>0</ID>
+                      <ActivateSound TTS="EN">unlimited magazine activated</ActivateSound>
+                      <DeactivateSound TTS="EN">unlimited magazine deactivated</DeactivateSound>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1016</ID>
+                  <Description>"Weapon Modifiers"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>808080</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>900</ID>
+                      <Description>"Bullet Damage"</Description>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>B0</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10C8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>899</ID>
+                      <Description>"Bullet Mass"</Description>
+                      <Options moHideChildren="1" moRecursiveSetValue="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>D8</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10C8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>907</ID>
+                          <Description>"Bullet Mass"</Description>
+                          <Color>000000</Color>
+                          <VariableType>Float</VariableType>
+                          <Address>WorldPTR</Address>
+                          <Offsets>
+                            <Offset>DC</Offset>
+                            <Offset>20</Offset>
+                            <Offset>10C8</Offset>
+                            <Offset>8</Offset>
+                          </Offsets>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1007</ID>
+                      <Description>"Muzzle Flash Size"</Description>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>1D4</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10C8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>995</ID>
+                      <Description>"Muzzle Velocity"</Description>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>114</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10C8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>989</ID>
+                      <Description>"Reload Speed"</Description>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>12C</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10C8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>790</ID>
+                      <Description>"Weapon Spread"</Description>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>74</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10C8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>789</ID>
+                      <Description>"Weapon Recoil"</Description>
+                      <Color>009797</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>2D8</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10C8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>28</ID>
+                      <Description>"Recoil"</Description>
+                      <Color>008080</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>2A4</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10C8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>27</ID>
+                      <Description>"Spread"</Description>
+                      <Color>008080</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>70</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10C8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1017</ID>
+                      <Description>"Range"</Description>
+                      <Color>008080</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>27C</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10C8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1018</ID>
+                      <Description>"Lock-on Range"</Description>
+                      <Color>008080</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>278</Offset>
+                        <Offset>20</Offset>
+                        <Offset>10C8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>23</ID>
+                      <Description>"Melee Damage Multiplier"</Description>
+                      <LastState Value="1" RealAddress="133978C4"/>
+                      <Color>008080</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>CA4</Offset>
+                        <Offset>10B8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>22</ID>
+                      <Description>"Damage Multiplier"</Description>
+                      <LastState Value="0.7200000286" RealAddress="133978B8"/>
+                      <Color>008080</Color>
+                      <VariableType>Float</VariableType>
+                      <Address>WorldPTR</Address>
+                      <Offsets>
+                        <Offset>C98</Offset>
+                        <Offset>10B8</Offset>
+                        <Offset>8</Offset>
+                      </Offsets>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>1008</ID>
+              <Description>"Teleport Options"</Description>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>C0C0C0</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>50</ID>
+                  <Description>"Teleport to Waypoint"</Description>
+                  <LastState/>
+                  <Color>FF00FF</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+local a = getAddress("BlipPTR")
+for i = 2000, 1, -1
+do
+  local n = readPointer(a + (i * 8))
+  if (n &gt; 0) and (8 == readInteger(n + 0x40)) and (84 == readInteger(n + 0x48))
+  then
+    local x = readFloat(n + 0x10)
+    local y = readFloat(n + 0x14)
+    local p = readPointer(readPointer(getAddress("WorldPTR")) + 8)
+    if (2 == readInteger(p + 0x1468))
+    then
+      p = readPointer(p + 0xD28)
+    end
+    local v = readPointer(p + 0x30)
+    writeFloat(v + 0x50, x)
+    writeFloat(v + 0x54, y)
+    writeFloat(v + 0x58, -210)
+    writeFloat(p + 0x90, x)
+    writeFloat(p + 0x94, y)
+    writeFloat(p + 0x98, -210)
+  end
+end
+[DISABLE]
+{$lua}
+local a = getAddress("BlipPTR")
+for i = 2000, 1, -1
+do
+  local n = readPointer(a + (i * 8))
+  if (n &gt; 0) and (8 == readInteger(n + 0x40)) and (84 == readInteger(n + 0x48))
+  then
+    local x = readFloat(n + 0x10)
+    local y = readFloat(n + 0x14)
+    local p = readPointer(readPointer(getAddress("WorldPTR")) + 8)
+    if (2 == readInteger(p + 0x1468))
+    then
+      p = readPointer(p + 0xD28)
+    end
+    local v = readPointer(p + 0x30)
+    writeFloat(v + 0x50, x)
+    writeFloat(v + 0x54, y)
+    writeFloat(v + 0x58, -210)
+    writeFloat(p + 0x90, x)
+    writeFloat(p + 0x94, y)
+    writeFloat(p + 0x98, -210)
+  end
+end
+</AssemblerScript>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Toggle Activation</Action>
+                      <Keys>
+                        <Key>45</Key>
+                      </Keys>
+                      <ID>0</ID>
+                      <ActivateSound TTS="EN">teleport activated</ActivateSound>
+                      <DeactivateSound TTS="EN">teleport activated</DeactivateSound>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>1019</ID>
+                  <Description>"Teleport to Objective"</Description>
+                  <LastState/>
+                  <Color>00CECE</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>[ENABLE]
+{$lua}
+local a = getAddress("BlipPTR")
+for i = 2000, 1, -1
+do
+  local n = readPointer(a + (i * 8))
+  if (n &gt; 0) and (1 == readInteger(n + 0x40)) and ((5 == readInteger(n + 0x48)) or (60 == readInteger(n + 0x48)) or (66 == readInteger(n + 0x48)))
+  then
+    local x = readFloat(n + 0x10)
+    local y = readFloat(n + 0x14)
+    local z = readFloat(n + 0x18)
+    local p = readPointer(readPointer(getAddress("WorldPTR")) + 8)
+    if (2 == readInteger(p + 0x1468))
+    then
+      p = readPointer(p + 0xD28)
+    end
+    local v = readPointer(p + 0x30)
+    writeFloat(v + 0x50, x)
+    writeFloat(v + 0x54, y)
+    writeFloat(v + 0x58, z)
+    writeFloat(p + 0x90, x)
+    writeFloat(p + 0x94, y)
+    writeFloat(p + 0x98, z)
+  end
+end
+[DISABLE]
+{$lua}
+local a = getAddress("BlipPTR")
+for i = 2000, 1, -1
+do
+  local n = readPointer(a + (i * 8))
+  if (n &gt; 0) and (1 == readInteger(n + 0x40)) and ((5 == readInteger(n + 0x48)) or (60 == readInteger(n + 0x48)) or (66 == readInteger(n + 0x48)))
+  then
+    local x = readFloat(n + 0x10)
+    local y = readFloat(n + 0x14)
+    local z = readFloat(n + 0x18)
+    local p = readPointer(readPointer(getAddress("WorldPTR")) + 8)
+    if (2 == readInteger(p + 0x1468))
+    then
+      p = readPointer(p + 0xD28)
+    end
+    local v = readPointer(p + 0x30)
+    writeFloat(v + 0x50, x)
+    writeFloat(v + 0x54, y)
+    writeFloat(v + 0x58, z)
+    writeFloat(p + 0x90, x)
+    writeFloat(p + 0x94, y)
+    writeFloat(p + 0x98, z)
+  end
+end
+</AssemblerScript>
+                  <Hotkeys>
+                    <Hotkey>
+                      <Action>Toggle Activation</Action>
+                      <Keys>
+                        <Key>36</Key>
+                      </Keys>
+                      <ID>0</ID>
+                    </Hotkey>
+                  </Hotkeys>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>751</ID>
+                  <Description>"Locations"</Description>
+                  <Options moHideChildren="1"/>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <Color>000000</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>788</ID>
+                      <Description>"Properties"</Description>
+                      <Options moHideChildren="1"/>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                      <CheatEntries>
+                        <CheatEntry>
+                          <ID>783</ID>
+                          <Description>"Eclipse Suit Penthouse 3"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-778.91
+[[[WorldPTR]+8]+30]+54:
+dd (float)337.35
+[[[WorldPTR]+8]+30]+58:
+dd (float)196.69
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-778.91
+[[[WorldPTR]+8]+30]+54:
+dd (float)337.35
+[[[WorldPTR]+8]+30]+58:
+dd (float)196.69
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1020</ID>
+                          <Description>"Garage Eclipse Suit Penthouse 3"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)228.50
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1000.78
+[[[WorldPTR]+8]+30]+58:
+dd (float)-99.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)228.50
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1000.78
+[[[WorldPTR]+8]+30]+58:
+dd (float)-99.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1021</ID>
+                          <Description>"Wild Oats Drive 3655"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-173.69
+[[[WorldPTR]+8]+30]+54:
+dd (float)495.75
+[[[WorldPTR]+8]+30]+58:
+dd (float)137.66
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-173.69
+[[[WorldPTR]+8]+30]+54:
+dd (float)495.75
+[[[WorldPTR]+8]+30]+58:
+dd (float)137.66
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1022</ID>
+                          <Description>"Garage Wild Oats Drive 3655"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)228.53
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1002.21
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)228.53
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1002.21
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1023</ID>
+                          <Description>"Tinsel Tower 42"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-613.68
+[[[WorldPTR]+8]+30]+54:
+dd (float)58.45
+[[[WorldPTR]+8]+30]+58:
+dd (float)98.23
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-613.68
+[[[WorldPTR]+8]+30]+54:
+dd (float)58.45
+[[[WorldPTR]+8]+30]+58:
+dd (float)98.23
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1024</ID>
+                          <Description>"Garage Tinsel Tower 42"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)228.53
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1001.76
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)228.53
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1001.76
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1025</ID>
+                          <Description>"Del Perro HTS 4"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-1458.57
+[[[WorldPTR]+8]+30]+54:
+dd (float)-531.82
+[[[WorldPTR]+8]+30]+58:
+dd (float)74.07
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-1458.57
+[[[WorldPTR]+8]+30]+54:
+dd (float)-531.82
+[[[WorldPTR]+8]+30]+58:
+dd (float)74.07
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1026</ID>
+                          <Description>"Garage Del Perro HTS 4"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)228.56
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1001.68
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)228.56
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1001.68
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1027</ID>
+                          <Description>"Bay City Ave APT 45"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)347.02
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1000.58
+[[[WorldPTR]+8]+30]+58:
+dd (float)-99.19
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)347.02
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1000.58
+[[[WorldPTR]+8]+30]+58:
+dd (float)-99.19
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1028</ID>
+                          <Description>"Garage Bay City Ave APT 45"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)198.26
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1006.94
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)198.26
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1006.94
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1029</ID>
+                          <Description>"home???"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)198.26
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1006.94
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)198.26
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1006.94
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1030</ID>
+                          <Description>"Garage Murrieta Height"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)228.61
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1001.76
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)228.61
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1001.76
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1031</ID>
+                          <Description>"Club House"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1001.20
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3158.58
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.90
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1001.20
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3158.58
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.90
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1032</ID>
+                          <Description>"Cash Factory"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1134.34
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3196.71
+[[[WorldPTR]+8]+30]+58:
+dd (float)-39.66
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1134.34
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3196.71
+[[[WorldPTR]+8]+30]+58:
+dd (float)-39.66
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1033</ID>
+                          <Description>"Cocaine Lockup"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1088.73
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3191.08
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1088.73
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3191.08
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1034</ID>
+                          <Description>"Weed Farm"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1062.11
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3185.22
+[[[WorldPTR]+8]+30]+58:
+dd (float)-39.16
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1062.11
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3185.22
+[[[WorldPTR]+8]+30]+58:
+dd (float)-39.16
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1035</ID>
+                          <Description>"Doc Forgery Office"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1172.20
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3196.74
+[[[WorldPTR]+8]+30]+58:
+dd (float)-39.00
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1172.20
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3196.74
+[[[WorldPTR]+8]+30]+58:
+dd (float)-39.00
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1036</ID>
+                          <Description>"Meth Lab"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)998.23
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3200.10
+[[[WorldPTR]+8]+30]+58:
+dd (float)-36.39
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)998.23
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3200.10
+[[[WorldPTR]+8]+30]+58:
+dd (float)-36.39
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1037</ID>
+                          <Description>"Office"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-73.29
+[[[WorldPTR]+8]+30]+54:
+dd (float)-817.49
+[[[WorldPTR]+8]+30]+58:
+dd (float)243.38
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-73.29
+[[[WorldPTR]+8]+30]+54:
+dd (float)-817.49
+[[[WorldPTR]+8]+30]+58:
+dd (float)243.38
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1038</ID>
+                          <Description>"Office Garage 1"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-89.11
+[[[WorldPTR]+8]+30]+54:
+dd (float)-821.76
+[[[WorldPTR]+8]+30]+58:
+dd (float)222.00
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-89.11
+[[[WorldPTR]+8]+30]+54:
+dd (float)-821.76
+[[[WorldPTR]+8]+30]+58:
+dd (float)222.00
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1039</ID>
+                          <Description>"Office Garage 2"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-70.74
+[[[WorldPTR]+8]+30]+54:
+dd (float)-828.96
+[[[WorldPTR]+8]+30]+58:
+dd (float)222.00
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-70.74
+[[[WorldPTR]+8]+30]+54:
+dd (float)-828.96
+[[[WorldPTR]+8]+30]+58:
+dd (float)222.00
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1040</ID>
+                          <Description>"Office Garage 3"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-79.31
+[[[WorldPTR]+8]+30]+54:
+dd (float)-808.45
+[[[WorldPTR]+8]+30]+58:
+dd (float)222.00
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-79.31
+[[[WorldPTR]+8]+30]+54:
+dd (float)-808.45
+[[[WorldPTR]+8]+30]+58:
+dd (float)222.00
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1041</ID>
+                          <Description>"Office Mod Shop"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-73.90
+[[[WorldPTR]+8]+30]+54:
+dd (float)-815.39
+[[[WorldPTR]+8]+30]+58:
+dd (float)285.00
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-73.90
+[[[WorldPTR]+8]+30]+54:
+dd (float)-815.39
+[[[WorldPTR]+8]+30]+58:
+dd (float)285.00
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1042</ID>
+                          <Description>"Vehicle Warehouse"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)971.93
+[[[WorldPTR]+8]+30]+54:
+dd (float)-2991.91
+[[[WorldPTR]+8]+30]+58:
+dd (float)-39.64
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)971.93
+[[[WorldPTR]+8]+30]+54:
+dd (float)-2991.91
+[[[WorldPTR]+8]+30]+58:
+dd (float)-39.64
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1043</ID>
+                          <Description>"Vehicle Warehouse Special Garage"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)987.70
+[[[WorldPTR]+8]+30]+54:
+dd (float)-2999.03
+[[[WorldPTR]+8]+30]+58:
+dd (float)-47.64
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)987.70
+[[[WorldPTR]+8]+30]+54:
+dd (float)-2999.03
+[[[WorldPTR]+8]+30]+58:
+dd (float)-47.64
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1044</ID>
+                          <Description>"Warehouse 1"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)993.66
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3098.90
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)993.66
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3098.90
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1045</ID>
+                          <Description>"Warehouse 2"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)993.63
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3099.11
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)993.63
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3099.11
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1046</ID>
+                          <Description>"Warehouse 3"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)993.57
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3099.28
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)993.57
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3099.28
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1047</ID>
+                          <Description>"Warehouse 4"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)993.31
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3099.15
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)993.31
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3099.15
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1048</ID>
+                          <Description>"Warehouse 5"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)993.52
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3099.01
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)993.52
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3099.01
+[[[WorldPTR]+8]+30]+58:
+dd (float)-38.99
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1049</ID>
+                          <Description>"Bunker"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)891.29
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3243.09
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.26
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)891.29
+[[[WorldPTR]+8]+30]+54:
+dd (float)-3243.09
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.26
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1050</ID>
+                          <Description>"Hangar"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-1266.00
+[[[WorldPTR]+8]+30]+54:
+dd (float)-2965.08
+[[[WorldPTR]+8]+30]+58:
+dd (float)-48.48
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-1266.00
+[[[WorldPTR]+8]+30]+54:
+dd (float)-2965.08
+[[[WorldPTR]+8]+30]+58:
+dd (float)-48.48
+</AssemblerScript>
+                        </CheatEntry>
+                        <CheatEntry>
+                          <ID>1051</ID>
+                          <Description>"Facility"</Description>
+                          <LastState/>
+                          <Color>008080</Color>
+                          <VariableType>Auto Assembler Script</VariableType>
+                          <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)481.48
+[[[WorldPTR]+8]+30]+54:
+dd (float)4814.24
+[[[WorldPTR]+8]+30]+58:
+dd (float)-58.38
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)481.48
+[[[WorldPTR]+8]+30]+54:
+dd (float)4814.24
+[[[WorldPTR]+8]+30]+58:
+dd (float)-58.38
+</AssemblerScript>
+                        </CheatEntry>
+                      </CheatEntries>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1052</ID>
+                      <Description>"Military Control Tower"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-2360.42
+[[[WorldPTR]+8]+30]+54:
+dd (float)3244.77
+[[[WorldPTR]+8]+30]+58:
+dd (float)92.90
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-2360.42
+[[[WorldPTR]+8]+30]+54:
+dd (float)3244.77
+[[[WorldPTR]+8]+30]+58:
+dd (float)92.90
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1053</ID>
+                      <Description>"Arcadius Rooftop Helipad"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-144.52
+[[[WorldPTR]+8]+30]+54:
+dd (float)-593.19
+[[[WorldPTR]+8]+30]+58:
+dd (float)211.78
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-144.52
+[[[WorldPTR]+8]+30]+54:
+dd (float)-593.19
+[[[WorldPTR]+8]+30]+58:
+dd (float)211.78
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1054</ID>
+                      <Description>"Top of Building in Construction"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-149.00
+[[[WorldPTR]+8]+30]+54:
+dd (float)-961.17
+[[[WorldPTR]+8]+30]+58:
+dd (float)269.14
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-149.00
+[[[WorldPTR]+8]+30]+54:
+dd (float)-961.17
+[[[WorldPTR]+8]+30]+58:
+dd (float)269.14
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1055</ID>
+                      <Description>"2 Car's Garage"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)173.2903
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1003.6
+[[[WorldPTR]+8]+30]+58:
+dd (float)-99.65707
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)173.2903
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1003.6
+[[[WorldPTR]+8]+30]+58:
+dd (float)-99.65707
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1056</ID>
+                      <Description>"6 Car's Garage"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)197.8153
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1002.293
+[[[WorldPTR]+8]+30]+58:
+dd (float)-99.65749
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)197.8153
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1002.293
+[[[WorldPTR]+8]+30]+58:
+dd (float)-99.65749
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1057</ID>
+                      <Description>"10 Car's Garage"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)229.9559
+[[[WorldPTR]+8]+30]+54:
+dd (float)-981.7928
+[[[WorldPTR]+8]+30]+58:
+dd (float)-99.66071
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)229.9559
+[[[WorldPTR]+8]+30]+54:
+dd (float)-981.7928
+[[[WorldPTR]+8]+30]+58:
+dd (float)-99.66071
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>1058</ID>
+                      <Description>"Altruist Camp"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-1171.16626
+[[[WorldPTR]+8]+30]+54:
+dd (float)4926.901367
+[[[WorldPTR]+8]+30]+58:
+dd (float)224.2603302
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-1171.16626
+[[[WorldPTR]+8]+30]+54:
+dd (float)4926.901367
+[[[WorldPTR]+8]+30]+58:
+dd (float)224.2603302
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>762</ID>
+                      <Description>"Comedy Club"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)377.1334839
+[[[WorldPTR]+8]+30]+54:
+dd (float)-991.3357544
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.60502625
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)377.1334839
+[[[WorldPTR]+8]+30]+54:
+dd (float)-991.3357544
+[[[WorldPTR]+8]+30]+58:
+dd (float)-98.60502625
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>758</ID>
+                      <Description>"FIB Roof"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)135.9195099
+[[[WorldPTR]+8]+30]+54:
+dd (float)-749.1860962
+[[[WorldPTR]+8]+30]+58:
+dd (float)266.6049805
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)135.9195099
+[[[WorldPTR]+8]+30]+54:
+dd (float)-749.1860962
+[[[WorldPTR]+8]+30]+58:
+dd (float)266.6049805
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>756</ID>
+                      <Description>"FIB Top Floor"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)135.733
+[[[WorldPTR]+8]+30]+54:
+dd (float)-749.216
+[[[WorldPTR]+8]+30]+58:
+dd (float)258.152
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)135.733
+[[[WorldPTR]+8]+30]+54:
+dd (float)-749.216
+[[[WorldPTR]+8]+30]+58:
+dd (float)258.152
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>759</ID>
+                      <Description>"Franklin's House"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)7.588002205
+[[[WorldPTR]+8]+30]+54:
+dd (float)537.2966919
+[[[WorldPTR]+8]+30]+58:
+dd (float)176.0281067
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)7.588002205
+[[[WorldPTR]+8]+30]+54:
+dd (float)537.2966919
+[[[WorldPTR]+8]+30]+58:
+dd (float)176.0281067
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>761</ID>
+                      <Description>"Michael's House"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-813.5049438
+[[[WorldPTR]+8]+30]+54:
+dd (float)179.5043335
+[[[WorldPTR]+8]+30]+58:
+dd (float)72.15883636
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-813.5049438
+[[[WorldPTR]+8]+30]+54:
+dd (float)179.5043335
+[[[WorldPTR]+8]+30]+58:
+dd (float)72.15883636
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>757</ID>
+                      <Description>"Lester's House"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1273.898
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1719.304
+[[[WorldPTR]+8]+30]+58:
+dd (float)54.771
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1273.898
+[[[WorldPTR]+8]+30]+54:
+dd (float)-1719.304
+[[[WorldPTR]+8]+30]+58:
+dd (float)54.771
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>970</ID>
+                      <Description>"Trevor's Meth Lab"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1393.126099
+[[[WorldPTR]+8]+30]+54:
+dd (float)3602.516846
+[[[WorldPTR]+8]+30]+58:
+dd (float)38.94193268
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1393.126099
+[[[WorldPTR]+8]+30]+54:
+dd (float)3602.516846
+[[[WorldPTR]+8]+30]+58:
+dd (float)38.94193268
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>760</ID>
+                      <Description>"Trevor's Trailer"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1975.552
+[[[WorldPTR]+8]+30]+54:
+dd (float)3820.538
+[[[WorldPTR]+8]+30]+58:
+dd (float)33.44833
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)1975.552
+[[[WorldPTR]+8]+30]+54:
+dd (float)3820.538
+[[[WorldPTR]+8]+30]+58:
+dd (float)33.44833
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>910</ID>
+                      <Description>"Maze Bank Roof"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-75.015
+[[[WorldPTR]+8]+30]+54:
+dd (float)-818.215
+[[[WorldPTR]+8]+30]+58:
+dd (float)326.176
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-75.015
+[[[WorldPTR]+8]+30]+54:
+dd (float)-818.215
+[[[WorldPTR]+8]+30]+58:
+dd (float)326.176
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>753</ID>
+                      <Description>"Mt. Chilliad"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)501.2804871
+[[[WorldPTR]+8]+30]+54:
+dd (float)5599.009277
+[[[WorldPTR]+8]+30]+58:
+dd (float)796.1891479
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)501.2804871
+[[[WorldPTR]+8]+30]+54:
+dd (float)5599.009277
+[[[WorldPTR]+8]+30]+58:
+dd (float)796.1891479
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>754</ID>
+                      <Description>"Mt. Gordo"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)2877.633
+[[[WorldPTR]+8]+30]+54:
+dd (float)5911.078
+[[[WorldPTR]+8]+30]+58:
+dd (float)369.624
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)2877.633
+[[[WorldPTR]+8]+30]+54:
+dd (float)5911.078
+[[[WorldPTR]+8]+30]+58:
+dd (float)369.624
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>752</ID>
+                      <Description>"Observatory"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-438.7547913
+[[[WorldPTR]+8]+30]+54:
+dd (float)1075.583618
+[[[WorldPTR]+8]+30]+58:
+dd (float)352.4458923
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)-438.7547913
+[[[WorldPTR]+8]+30]+54:
+dd (float)1075.583618
+[[[WorldPTR]+8]+30]+58:
+dd (float)352.4458923
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>755</ID>
+                      <Description>"Vinewood Sign"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)812.5202637
+[[[WorldPTR]+8]+30]+54:
+dd (float)1275.353394
+[[[WorldPTR]+8]+30]+58:
+dd (float)360.5112
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)812.5202637
+[[[WorldPTR]+8]+30]+54:
+dd (float)1275.353394
+[[[WorldPTR]+8]+30]+58:
+dd (float)360.5112
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>780</ID>
+                      <Description>"Far Out"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)50000
+[[[WorldPTR]+8]+30]+54:
+dd (float)1
+[[[WorldPTR]+8]+30]+58:
+dd (float)1
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+50:
+dd (float)50000
+[[[WorldPTR]+8]+30]+54:
+dd (float)1
+[[[WorldPTR]+8]+30]+58:
+dd (float)1
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>784</ID>
+                      <Description>"Get High"</Description>
+                      <LastState/>
+                      <Color>008080</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>[ENABLE]
+//code from here to '[DISABLE]' will be used to enable the cheat
+
+[[[WorldPTR]+8]+30]+58:
+dd (float)5000
+[[[WorldPTR]+8]+30]+54:
+dd (float)1
+[[[WorldPTR]+8]+30]+50:
+dd (float)1
+ 
+[DISABLE]
+//code from here till the end of the code will be used to disable the cheat
+
+[[[WorldPTR]+8]+30]+58:
+dd (float)5000
+[[[WorldPTR]+8]+30]+54:
+dd (float)1
+[[[WorldPTR]+8]+30]+50:
+dd (float)1
+</AssemblerScript>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <UserdefinedSymbols/>
+</CheatTable>
