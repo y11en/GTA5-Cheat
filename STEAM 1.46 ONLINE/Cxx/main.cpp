@@ -61,7 +61,7 @@ int initData(Memory& mem)
 	gobal::d::address_waypoint = mem.getAddress(mem.getBaseAddress() + 0x2CA3218, { 0xD8, 0x340, 0x6C8 });
 	
 	//地堡
-	gobal::d::bunk_numPTR = mem.getAddress(gobal::d::gobalPTR - 0x128, {0x1180,0x4088 });
+	gobal::d::bunk_numPTR = mem.getAddress(gobal::d::gobalPTR - 0x128, {0x1180,0x4088 }) + 0xA0;
 
 	printf("gobal::d::address_player_Xpos  = %I64d\ngobal::d::address_car_Xpos = %I64d\n", 
 		gobal::d::address_player_Xpos, gobal::d::address_car_Xpos);
