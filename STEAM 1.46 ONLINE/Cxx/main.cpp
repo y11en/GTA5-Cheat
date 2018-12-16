@@ -156,21 +156,21 @@ uint64_t start()
 									{
 										gobal::d::address_car_Xpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0xD28, 0x30, 0x50 });
 										gobal::d::address_car_Ypos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0xD28, 0x30, 0x54 });
-										//gobal::d::address_car_Zpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0xD28, 0x30, 0x58 });
+										gobal::d::address_car_Zpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0xD28, 0x30, 0x58 });
 
 										gobal::d::address_player_Xpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0xD28, 0x90 });
 										gobal::d::address_player_Ypos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0xD28, 0x94 });
-										//gobal::d::address_player_Zpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0xD28, 0x98 });
+										gobal::d::address_player_Zpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0xD28, 0x98 });
 									}
 									else
 									{
 										gobal::d::address_car_Xpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0x30, 0x50 });
 										gobal::d::address_car_Ypos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0x30, 0x54 });
-										//gobal::d::address_car_Zpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0x30, 0x58 });
+										gobal::d::address_car_Zpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0x30, 0x58 });
 
 										gobal::d::address_player_Xpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0x90 });
 										gobal::d::address_player_Ypos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0x94 });
-										//gobal::d::address_player_Zpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0x98 });
+										gobal::d::address_player_Zpos = GTA.getAddress(gobal::d::worldPTR, { 0x8, 0x98 });
 									}
 
 
