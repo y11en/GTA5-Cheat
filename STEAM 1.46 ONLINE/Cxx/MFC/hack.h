@@ -4,16 +4,16 @@
 
 #define GTA5_DEF_NOT_SET_WAYPOINT 64000
 
-#define HOTKEY_BUNKER_PROFIT	4001		// control + F1
-#define HOTKEY_GOD_MOD		4002		// control + F3
-#define HOTKEY_TRANSFER		4003		// control + F4
+#define HOTKEY_BUNKER_PROFIT	4001		// Shift + F1
+#define HOTKEY_GOD_MOD		4002		// Shift + F3
+#define HOTKEY_TRANSFER		4003		// Shift + F4
 
 #define GAME_PROC_NAME	"GTA5.exe"
 
 int string2voc(WCHAR* voc);
 namespace gobal
 {
-	namespace s	//◊¥Ã¨
+	namespace s	//Áä∂ÊÄÅ
 	{
 		static bool godMod;
 		static float player_Xpos;
@@ -24,12 +24,12 @@ namespace gobal
 		static float car_Ypos;
 		static float car_Zpos;
 
-		//µÿ±§ ’“Ê
+		//Âú∞Â†°Êî∂Áõä
 		static uint64_t max_profit;
 
 	}
 
-	namespace d // ˝æ›
+	namespace d //Êï∞ÊçÆ
 	{
 		static uint64_t worldPTR;
 		static uint64_t gobalPTR;
@@ -39,7 +39,7 @@ namespace gobal
 		static uint64_t godMod_switch;
 		static uint64_t name;
 
-		//µÿ±§ªıŒÔ
+		//Âú∞Â†°Ë¥ßÁâ©
 		static uint64_t bunk_num;
 
 		static uint64_t address_player_Xpos;
